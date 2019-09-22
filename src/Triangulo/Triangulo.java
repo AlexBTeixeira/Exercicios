@@ -1,8 +1,17 @@
 package Triangulo;
+
 public class Triangulo {
     private int lado1;
     private int lado2;
     private int lado3;
+
+    public enum TipoTrianguloAngulos {
+        ACUTANGULO, OBTUSANGULO, RETANGULO;
+    }
+
+    public enum TipoTrianguloLados {
+        EQUILATERO, ISOSCELES, ESCALENO;
+    }
 
     public Triangulo(int lado01, int lado02, int lado03) {
 
@@ -34,29 +43,29 @@ public class Triangulo {
         B = getAngleB();
         C = getAngleC();
 
-        if (A < 90 && B < 90 && C < 90) {//Acute
+        if (A < 90 && B < 90 && C < 90) {
 
             return TipoTrianguloAngulos.ACUTANGULO;
 
-        } else if (A > 90 || B > 90 || C > 90) {//Obtuse
+        } else if (A > 90 || B > 90 || C > 90) {
 
             return TipoTrianguloAngulos.OBTUSANGULO;
 
-        } else if (A == 90 || B == 90 || C == 90)//Right
+        } else if (A == 90 || B == 90 || C == 90)
             return TipoTrianguloAngulos.RETANGULO;
         else
             return null;
     }
 
-    public double getAngleA() {
+    private double getAngleA() {
         return Math.toDegrees(Math.acos((Math.pow(lado1, 2) - Math.pow(lado2, 2) - Math.pow(lado3, 2)) / (-2 * lado2 * lado3)));
     }
 
-    public double getAngleB() {
+    private double getAngleB() {
         return Math.toDegrees(Math.acos((Math.pow(lado2, 2) - Math.pow(lado1, 2) - Math.pow(lado3, 2)) / (-2 * lado1 * lado3)));
     }
 
-    public double getAngleC() {
+    private double getAngleC() {
         return Math.toDegrees(Math.acos((Math.pow(lado3, 2) - Math.pow(lado1, 2) - Math.pow(lado2, 2)) / (-2 * lado2 * lado1)));
     }
 
